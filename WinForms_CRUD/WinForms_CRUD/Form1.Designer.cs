@@ -29,174 +29,204 @@ namespace WinForms_CRUD
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.dgvProduct = new System.Windows.Forms.DataGridView();
+            this.lblTitle = new System.Windows.Forms.Label();
+            this.lblProductSearch = new System.Windows.Forms.Label();
+            this.lblProductName = new System.Windows.Forms.Label();
+            this.lblQuantity = new System.Windows.Forms.Label();
+            this.lblUnitPrice = new System.Windows.Forms.Label();
+            this.txtProductSearch = new System.Windows.Forms.TextBox();
+            this.txtProductName = new System.Windows.Forms.TextBox();
+            this.txtQuantity = new System.Windows.Forms.TextBox();
+            this.txtUnitPrice = new System.Windows.Forms.TextBox();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.lblProductNameError = new System.Windows.Forms.Label();
+            this.lblQuantityError = new System.Windows.Forms.Label();
+            this.lblUnitPriceError = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProduct)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dgvProduct
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(15, 62);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(553, 376);
-            this.dataGridView1.TabIndex = 0;
+            this.dgvProduct.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvProduct.Location = new System.Drawing.Point(15, 62);
+            this.dgvProduct.Name = "dgvProduct";
+            this.dgvProduct.RowTemplate.Height = 23;
+            this.dgvProduct.Size = new System.Drawing.Size(553, 376);
+            this.dgvProduct.TabIndex = 0;
             // 
-            // label1
+            // lblTitle
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("굴림", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label1.Location = new System.Drawing.Point(18, 19);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(134, 27);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "재고 내역";
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Font = new System.Drawing.Font("굴림", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblTitle.Location = new System.Drawing.Point(18, 19);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(134, 27);
+            this.lblTitle.TabIndex = 1;
+            this.lblTitle.Text = "재고 내역";
             // 
-            // label2
+            // lblProductSearch
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(593, 81);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(69, 12);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "제품명 검색";
+            this.lblProductSearch.AutoSize = true;
+            this.lblProductSearch.Location = new System.Drawing.Point(593, 72);
+            this.lblProductSearch.Name = "lblProductSearch";
+            this.lblProductSearch.Size = new System.Drawing.Size(69, 12);
+            this.lblProductSearch.TabIndex = 2;
+            this.lblProductSearch.Text = "제품명 검색";
             // 
-            // label3
+            // lblProductName
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(591, 179);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(41, 12);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "제품명";
+            this.lblProductName.AutoSize = true;
+            this.lblProductName.Location = new System.Drawing.Point(593, 135);
+            this.lblProductName.Name = "lblProductName";
+            this.lblProductName.Size = new System.Drawing.Size(41, 12);
+            this.lblProductName.TabIndex = 3;
+            this.lblProductName.Text = "제품명";
             // 
-            // label4
+            // lblQuantity
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(591, 216);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(29, 12);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "수량";
+            this.lblQuantity.AutoSize = true;
+            this.lblQuantity.Location = new System.Drawing.Point(593, 205);
+            this.lblQuantity.Name = "lblQuantity";
+            this.lblQuantity.Size = new System.Drawing.Size(29, 12);
+            this.lblQuantity.TabIndex = 4;
+            this.lblQuantity.Text = "수량";
             // 
-            // label5
+            // lblUnitPrice
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(632, 309);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(0, 12);
-            this.label5.TabIndex = 5;
+            this.lblUnitPrice.AutoSize = true;
+            this.lblUnitPrice.Location = new System.Drawing.Point(593, 275);
+            this.lblUnitPrice.Name = "lblUnitPrice";
+            this.lblUnitPrice.Size = new System.Drawing.Size(29, 12);
+            this.lblUnitPrice.TabIndex = 6;
+            this.lblUnitPrice.Text = "단가";
             // 
-            // label6
+            // txtProductSearch
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(591, 254);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(29, 12);
-            this.label6.TabIndex = 6;
-            this.label6.Text = "단가";
+            this.txtProductSearch.Location = new System.Drawing.Point(590, 88);
+            this.txtProductSearch.Name = "txtProductSearch";
+            this.txtProductSearch.Size = new System.Drawing.Size(128, 21);
+            this.txtProductSearch.TabIndex = 7;
             // 
-            // textBox1
+            // txtProductName
             // 
-            this.textBox1.Location = new System.Drawing.Point(590, 97);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(128, 21);
-            this.textBox1.TabIndex = 7;
+            this.txtProductName.Location = new System.Drawing.Point(590, 150);
+            this.txtProductName.Name = "txtProductName";
+            this.txtProductName.Size = new System.Drawing.Size(181, 21);
+            this.txtProductName.TabIndex = 8;
             // 
-            // textBox2
+            // txtQuantity
             // 
-            this.textBox2.Location = new System.Drawing.Point(641, 173);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(130, 21);
-            this.textBox2.TabIndex = 8;
+            this.txtQuantity.Location = new System.Drawing.Point(590, 220);
+            this.txtQuantity.Name = "txtQuantity";
+            this.txtQuantity.Size = new System.Drawing.Size(181, 21);
+            this.txtQuantity.TabIndex = 9;
             // 
-            // textBox3
+            // txtUnitPrice
             // 
-            this.textBox3.Location = new System.Drawing.Point(641, 211);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(130, 21);
-            this.textBox3.TabIndex = 9;
+            this.txtUnitPrice.Location = new System.Drawing.Point(590, 290);
+            this.txtUnitPrice.Name = "txtUnitPrice";
+            this.txtUnitPrice.Size = new System.Drawing.Size(181, 21);
+            this.txtUnitPrice.TabIndex = 10;
             // 
-            // textBox4
+            // btnSearch
             // 
-            this.textBox4.Location = new System.Drawing.Point(641, 249);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(130, 21);
-            this.textBox4.TabIndex = 10;
+            this.btnSearch.Location = new System.Drawing.Point(724, 86);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(47, 23);
+            this.btnSearch.TabIndex = 11;
+            this.btnSearch.Text = "검색";
+            this.btnSearch.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btnDelete
             // 
-            this.button1.Location = new System.Drawing.Point(724, 95);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(47, 23);
-            this.button1.TabIndex = 11;
-            this.button1.Text = "검색";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnDelete.Location = new System.Drawing.Point(590, 407);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(181, 26);
+            this.btnDelete.TabIndex = 14;
+            this.btnDelete.Text = "삭제";
+            this.btnDelete.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // btnUpdate
             // 
-            this.button4.Location = new System.Drawing.Point(595, 378);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(176, 33);
-            this.button4.TabIndex = 14;
-            this.button4.Text = "삭제";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnUpdate.Location = new System.Drawing.Point(590, 375);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(181, 26);
+            this.btnUpdate.TabIndex = 13;
+            this.btnUpdate.Text = "수정";
+            this.btnUpdate.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btnAdd
             // 
-            this.button3.Location = new System.Drawing.Point(595, 338);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(176, 33);
-            this.button3.TabIndex = 13;
-            this.button3.Text = "수정";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnAdd.Location = new System.Drawing.Point(590, 343);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(181, 26);
+            this.btnAdd.TabIndex = 12;
+            this.btnAdd.Text = "추가";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // button2
+            // lblProductNameError
             // 
-            this.button2.Location = new System.Drawing.Point(595, 298);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(176, 33);
-            this.button2.TabIndex = 12;
-            this.button2.Text = "추가";
-            this.button2.UseVisualStyleBackColor = true;
+            this.lblProductNameError.AutoSize = true;
+            this.lblProductNameError.Font = new System.Drawing.Font("굴림", 8F);
+            this.lblProductNameError.ForeColor = System.Drawing.Color.Red;
+            this.lblProductNameError.Location = new System.Drawing.Point(595, 174);
+            this.lblProductNameError.Name = "lblProductNameError";
+            this.lblProductNameError.Size = new System.Drawing.Size(148, 11);
+            this.lblProductNameError.TabIndex = 15;
+            this.lblProductNameError.Text = "이미 존재하는 제품명입니다.";
+            // 
+            // lblQuantityError
+            // 
+            this.lblQuantityError.AutoSize = true;
+            this.lblQuantityError.Font = new System.Drawing.Font("굴림", 8F);
+            this.lblQuantityError.ForeColor = System.Drawing.Color.Red;
+            this.lblQuantityError.Location = new System.Drawing.Point(595, 244);
+            this.lblQuantityError.Name = "lblQuantityError";
+            this.lblQuantityError.Size = new System.Drawing.Size(115, 11);
+            this.lblQuantityError.TabIndex = 16;
+            this.lblQuantityError.Text = "숫자만 입력해 주세요.";
+            // 
+            // lblUnitPriceError
+            // 
+            this.lblUnitPriceError.AutoSize = true;
+            this.lblUnitPriceError.Font = new System.Drawing.Font("굴림", 8F);
+            this.lblUnitPriceError.ForeColor = System.Drawing.Color.Red;
+            this.lblUnitPriceError.Location = new System.Drawing.Point(595, 314);
+            this.lblUnitPriceError.Name = "lblUnitPriceError";
+            this.lblUnitPriceError.Size = new System.Drawing.Size(115, 11);
+            this.lblUnitPriceError.TabIndex = 17;
+            this.lblUnitPriceError.Text = "숫자만 입력해 주세요.";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(791, 450);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.lblUnitPriceError);
+            this.Controls.Add(this.lblQuantityError);
+            this.Controls.Add(this.lblProductNameError);
+            this.Controls.Add(this.btnDelete);
+            this.Controls.Add(this.btnUpdate);
+            this.Controls.Add(this.btnAdd);
+            this.Controls.Add(this.btnSearch);
+            this.Controls.Add(this.txtUnitPrice);
+            this.Controls.Add(this.txtQuantity);
+            this.Controls.Add(this.txtProductName);
+            this.Controls.Add(this.txtProductSearch);
+            this.Controls.Add(this.lblUnitPrice);
+            this.Controls.Add(this.lblQuantity);
+            this.Controls.Add(this.lblProductName);
+            this.Controls.Add(this.lblProductSearch);
+            this.Controls.Add(this.lblTitle);
+            this.Controls.Add(this.dgvProduct);
             this.Name = "Form1";
             this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProduct)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -204,21 +234,23 @@ namespace WinForms_CRUD
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.DataGridView dgvProduct;
+        private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.Label lblProductSearch;
+        private System.Windows.Forms.Label lblProductName;
+        private System.Windows.Forms.Label lblQuantity;
+        private System.Windows.Forms.Label lblUnitPrice;
+        private System.Windows.Forms.TextBox txtProductSearch;
+        private System.Windows.Forms.TextBox txtProductName;
+        private System.Windows.Forms.TextBox txtQuantity;
+        private System.Windows.Forms.TextBox txtUnitPrice;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Label lblProductNameError;
+        private System.Windows.Forms.Label lblQuantityError;
+        private System.Windows.Forms.Label lblUnitPriceError;
     }
 }
 
