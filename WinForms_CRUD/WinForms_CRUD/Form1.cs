@@ -62,11 +62,11 @@ namespace WinForms_CRUD
             ResetFields();
         }
 
-        private bool IsDuplicate(string columnName, string strItem)
+        private bool IsDuplicate(string columnName, string item)
         {
             foreach (DataRow row in table.Rows)
             {
-                if (row[columnName].ToString().Equals(strItem, StringComparison.OrdinalIgnoreCase))
+                if (row[columnName].ToString().Equals(item, StringComparison.OrdinalIgnoreCase))
                 {
                     return true;
                 }
@@ -95,15 +95,32 @@ namespace WinForms_CRUD
                 isValid = false;
             }
 
+            // 제품명 형식 확인
+            if (!IsFormatValid(txtProductName.Text, @"^.+$"))
+            {
+                lblProductNameError.Text = "제품명을 입력해 주세요.";
+                isValid = false;
+            }
+
             // 수량 형식 확인
-            if (!IsFormatValid(txtQuantity.Text, @"^\d+$"))
+            if (!IsFormatValid(txtQuantity.Text, @"^.+$"))
+            {
+                lblQuantityError.Text = "값을 입력해 주세요.";
+                isValid = false;
+            } 
+            else if (!IsFormatValid(txtQuantity.Text, @"^\d+$"))
             {
                 lblQuantityError.Text = "숫자만 입력해 주세요.";
                 isValid = false;
             }
 
             // 단가 형식 확인
-            if (!IsFormatValid(txtUnitPrice.Text, @"^\d+$"))
+            if (!IsFormatValid(txtUnitPrice.Text, @"^.+$"))
+            {
+                lblUnitPriceError.Text = "값을 입력해 주세요.";
+                isValid = false;
+            }
+            else if (!IsFormatValid(txtUnitPrice.Text, @"^\d+$"))
             {
                 lblUnitPriceError.Text = "숫자만 입력해 주세요.";
                 isValid = false;
