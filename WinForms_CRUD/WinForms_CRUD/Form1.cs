@@ -31,13 +31,15 @@ namespace WinForms_CRUD
 
         private void ResetFields()
         {
+            txtProductSearch.Text = "";
             txtProductName.Text = "";
             txtQuantity.Text = "";
             txtUnitPrice.Text = "";
         }
 
         private void ResetErrorFields()
-        { 
+        {
+            lblProductSearchError.Text = "";
             lblProductNameError.Text = "";
             lblQuantityError.Text = "";
             lblUnitPriceError.Text = "";
@@ -62,7 +64,7 @@ namespace WinForms_CRUD
             ResetFields();
         }
 
-        private bool IsDuplicate(string columnName, string item)
+        private bool HasData(string columnName, string item)
         {
             foreach (DataRow row in table.Rows)
             {
@@ -89,7 +91,7 @@ namespace WinForms_CRUD
             bool isValid = true;
 
             // 중복 확인
-            if (IsDuplicate("제품명", txtProductName.Text))
+            if (HasData("제품명", txtProductName.Text))
             {
                 lblProductNameError.Text = "이미 존재하는 제품명입니다.";
                 isValid = false;
@@ -127,6 +129,51 @@ namespace WinForms_CRUD
             }
 
             return isValid;
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            ResetErrorFields();
+
+            DataTable filteredTable = table.Clone();
+            DataRow newRow = filteredTable.NewRow();
+
+            // 전체조회
+            if (!IsFormatValid(txtProductSearch.Text, @"^.+$"))
+            {
+                dgvProduct.DataSource = table;
+                ResetFields();
+                return;
+            }
+
+            // 데이터 조회
+            if (!HasData("제품명", txtProductSearch.Text))
+            {
+                lblProductSearchError.Text = "존재하지 않는 제품입니다.";
+                ResetFields();
+                return;
+            }
+
+            foreach (DataRow row in table.Rows)
+            {
+                if (row["제품명"].ToString() == txtProductSearch.Text)
+                {
+                    string productName = row["제품명"].ToString();
+                    Int32 quantity = Convert.ToInt32(row["수량"]);
+                    Int32 unitPrice = Convert.ToInt32(row["단가"]);
+                    Int32 price = Convert.ToInt32(row["금액"]);
+
+                    newRow["제품명"] = productName;
+                    newRow["수량"] = quantity;
+                    newRow["단가"] = unitPrice;
+                    newRow["금액"] = price;
+
+                    filteredTable.Rows.Add(newRow);
+                    dgvProduct.DataSource = filteredTable;
+                    ResetFields();
+                    return;
+                }
+            }
         }
     }
 }
