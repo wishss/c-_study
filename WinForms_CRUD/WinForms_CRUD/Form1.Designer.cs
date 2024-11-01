@@ -46,6 +46,7 @@ namespace WinForms_CRUD
             this.lblProductNameError = new System.Windows.Forms.Label();
             this.lblQuantityError = new System.Windows.Forms.Label();
             this.lblUnitPriceError = new System.Windows.Forms.Label();
+            this.lblProductSearchError = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProduct)).BeginInit();
             this.SuspendLayout();
             // 
@@ -80,7 +81,7 @@ namespace WinForms_CRUD
             // lblProductName
             // 
             this.lblProductName.AutoSize = true;
-            this.lblProductName.Location = new System.Drawing.Point(593, 135);
+            this.lblProductName.Location = new System.Drawing.Point(593, 149);
             this.lblProductName.Name = "lblProductName";
             this.lblProductName.Size = new System.Drawing.Size(41, 12);
             this.lblProductName.TabIndex = 3;
@@ -89,7 +90,7 @@ namespace WinForms_CRUD
             // lblQuantity
             // 
             this.lblQuantity.AutoSize = true;
-            this.lblQuantity.Location = new System.Drawing.Point(593, 205);
+            this.lblQuantity.Location = new System.Drawing.Point(593, 211);
             this.lblQuantity.Name = "lblQuantity";
             this.lblQuantity.Size = new System.Drawing.Size(29, 12);
             this.lblQuantity.TabIndex = 4;
@@ -113,14 +114,14 @@ namespace WinForms_CRUD
             // 
             // txtProductName
             // 
-            this.txtProductName.Location = new System.Drawing.Point(590, 150);
+            this.txtProductName.Location = new System.Drawing.Point(590, 164);
             this.txtProductName.Name = "txtProductName";
             this.txtProductName.Size = new System.Drawing.Size(181, 21);
             this.txtProductName.TabIndex = 8;
             // 
             // txtQuantity
             // 
-            this.txtQuantity.Location = new System.Drawing.Point(590, 220);
+            this.txtQuantity.Location = new System.Drawing.Point(590, 226);
             this.txtQuantity.Name = "txtQuantity";
             this.txtQuantity.Size = new System.Drawing.Size(181, 21);
             this.txtQuantity.TabIndex = 9;
@@ -140,6 +141,7 @@ namespace WinForms_CRUD
             this.btnSearch.TabIndex = 11;
             this.btnSearch.Text = "검색";
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // btnDelete
             // 
@@ -174,7 +176,7 @@ namespace WinForms_CRUD
             this.lblProductNameError.AutoSize = true;
             this.lblProductNameError.Font = new System.Drawing.Font("굴림", 8F);
             this.lblProductNameError.ForeColor = System.Drawing.Color.Red;
-            this.lblProductNameError.Location = new System.Drawing.Point(595, 174);
+            this.lblProductNameError.Location = new System.Drawing.Point(595, 188);
             this.lblProductNameError.Name = "lblProductNameError";
             this.lblProductNameError.Size = new System.Drawing.Size(148, 11);
             this.lblProductNameError.TabIndex = 15;
@@ -185,7 +187,7 @@ namespace WinForms_CRUD
             this.lblQuantityError.AutoSize = true;
             this.lblQuantityError.Font = new System.Drawing.Font("굴림", 8F);
             this.lblQuantityError.ForeColor = System.Drawing.Color.Red;
-            this.lblQuantityError.Location = new System.Drawing.Point(595, 244);
+            this.lblQuantityError.Location = new System.Drawing.Point(595, 250);
             this.lblQuantityError.Name = "lblQuantityError";
             this.lblQuantityError.Size = new System.Drawing.Size(115, 11);
             this.lblQuantityError.TabIndex = 16;
@@ -202,11 +204,23 @@ namespace WinForms_CRUD
             this.lblUnitPriceError.TabIndex = 17;
             this.lblUnitPriceError.Text = "숫자만 입력해 주세요.";
             // 
+            // lblProductSearchError
+            // 
+            this.lblProductSearchError.AutoSize = true;
+            this.lblProductSearchError.Font = new System.Drawing.Font("굴림", 8F);
+            this.lblProductSearchError.ForeColor = System.Drawing.Color.Red;
+            this.lblProductSearchError.Location = new System.Drawing.Point(595, 112);
+            this.lblProductSearchError.Name = "lblProductSearchError";
+            this.lblProductSearchError.Size = new System.Drawing.Size(137, 11);
+            this.lblProductSearchError.TabIndex = 18;
+            this.lblProductSearchError.Text = "존재하지 않는 제품입니다.";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(791, 450);
+            this.Controls.Add(this.lblProductSearchError);
             this.Controls.Add(this.lblUnitPriceError);
             this.Controls.Add(this.lblQuantityError);
             this.Controls.Add(this.lblProductNameError);
@@ -248,6 +262,7 @@ namespace WinForms_CRUD
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Label lblProductSearchError;
         private System.Windows.Forms.Label lblProductNameError;
         private System.Windows.Forms.Label lblQuantityError;
         private System.Windows.Forms.Label lblUnitPriceError;
