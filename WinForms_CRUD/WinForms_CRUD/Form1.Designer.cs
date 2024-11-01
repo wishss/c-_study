@@ -58,6 +58,7 @@ namespace WinForms_CRUD
             this.dgvProduct.RowTemplate.Height = 23;
             this.dgvProduct.Size = new System.Drawing.Size(553, 376);
             this.dgvProduct.TabIndex = 0;
+            this.dgvProduct.SelectionChanged += new System.EventHandler(this.dgvProduct_SelectionChanged);
             // 
             // lblTitle
             // 
@@ -151,6 +152,7 @@ namespace WinForms_CRUD
             this.btnDelete.TabIndex = 14;
             this.btnDelete.Text = "삭제";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnUpdate
             // 

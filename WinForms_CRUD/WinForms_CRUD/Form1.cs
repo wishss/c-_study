@@ -13,11 +13,15 @@ namespace WinForms_CRUD
 {
     public partial class Form1 : Form
     {
-        private DataTable table;
+        private DataTable table; // 원본 데이터 테이블
+        private DataTable filteredTable; // 필터링된 데이터 테이블
+        private bool isFiltered; // 필터링 여부를 나타내는 플래그
 
         public Form1()
         {
             InitializeComponent();
+
+            isFiltered = false;
 
             ResetFields();
             ResetErrorFields();
@@ -27,6 +31,10 @@ namespace WinForms_CRUD
             table.Columns.Add("수량", typeof(Int32));
             table.Columns.Add("단가", typeof(Decimal));
             table.Columns.Add("금액", typeof(Decimal));
+
+            dgvProduct.ReadOnly = true; // 그리드 읽기 전용 설정
+            dgvProduct.AllowUserToAddRows = false; // 비어 있는 행 추가 방지
+            dgvProduct.MultiSelect = false; // 여러 행 선택 비활성화
         }
 
         private void ResetFields()
@@ -135,13 +143,16 @@ namespace WinForms_CRUD
         {
             ResetErrorFields();
 
-            DataTable filteredTable = table.Clone();
+            filteredTable = table.Clone();
+            //DataTable filteredTable = table.Clone();
             DataRow newRow = filteredTable.NewRow();
 
             // 전체조회
             if (!IsFormatValid(txtProductSearch.Text, @"^.+$"))
             {
                 dgvProduct.DataSource = table;
+                isFiltered = false;
+
                 ResetFields();
                 return;
             }
@@ -170,9 +181,81 @@ namespace WinForms_CRUD
 
                     filteredTable.Rows.Add(newRow);
                     dgvProduct.DataSource = filteredTable;
+                    isFiltered = true;
+
                     ResetFields();
                     return;
                 }
+            }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            ResetErrorFields();
+
+            if (dgvProduct.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = dgvProduct.SelectedRows[0];
+                DataRowView rowView = selectedRow.DataBoundItem as DataRowView;
+
+                if (!isFiltered)
+                {
+                    if (rowView != null)
+                    {
+                        DataRow dataRow = rowView.Row;
+                        dataRow.Delete();
+                    }
+                    dgvProduct.DataSource = table;
+                }
+                else
+                {
+                    if (rowView != null)
+                    {
+                        DataRow dataRow = rowView.Row;
+
+                        DeleteRowByColumnValue("제품명", dataRow["제품명"].ToString());
+                        dataRow.Delete();
+                    }
+                    dgvProduct.DataSource = filteredTable;
+
+                }
+
+                ResetFields();
+                return;
+            }
+            MessageBox.Show("삭제할 항목을 선택해주세요.");
+            ResetFields();
+        }
+
+        private void DeleteRowByColumnValue(string columnName, string item)
+        {
+            foreach (DataRow row in table.Rows)
+            {
+                if (row[columnName].ToString().Equals(item, StringComparison.OrdinalIgnoreCase))
+                {
+                    row.Delete();
+                    break; // 첫 번째로 찾은 행을 삭제한 후 루프 종료
+                }
+            }
+        }
+
+        private void dgvProduct_SelectionChanged(object sender, EventArgs e)
+        {
+            ResetFields();
+
+            // 선택된 행이 있을 때
+            if (dgvProduct.SelectedRows.Count > 0)
+            {
+                // 선택된 첫 번째 행을 가져옴
+                DataGridViewRow selectedRow = dgvProduct.SelectedRows[0];
+
+                string productName = selectedRow.Cells["제품명"].Value.ToString();
+                Int32 quantity = Convert.ToInt32(selectedRow.Cells["수량"].Value);
+                Int32 unitPrice = Convert.ToInt32(selectedRow.Cells["단가"].Value);
+
+                txtProductName.Text = productName;
+                txtQuantity.Text = quantity.ToString();
+                txtUnitPrice.Text = unitPrice.ToString();
             }
         }
     }
