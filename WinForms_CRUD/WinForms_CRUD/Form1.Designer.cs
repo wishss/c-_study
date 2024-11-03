@@ -162,6 +162,7 @@ namespace WinForms_CRUD
             this.btnUpdate.TabIndex = 13;
             this.btnUpdate.Text = "수정";
             this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnAdd
             // 
