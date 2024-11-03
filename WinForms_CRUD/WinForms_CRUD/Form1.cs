@@ -72,11 +72,11 @@ namespace WinForms_CRUD
             ResetFields();
         }
 
-        private bool HasData(string columnName, string item)
+        private bool HasData(string keyColumn, string keyColumnItem)
         {
             foreach (DataRow row in table.Rows)
             {
-                if (row[columnName].ToString().Equals(item, StringComparison.OrdinalIgnoreCase))
+                if (row[keyColumn].ToString().Equals(keyColumnItem, StringComparison.OrdinalIgnoreCase))
                 {
                     return true;
                 }
@@ -144,7 +144,6 @@ namespace WinForms_CRUD
             ResetErrorFields();
 
             filteredTable = table.Clone();
-            //DataTable filteredTable = table.Clone();
             DataRow newRow = filteredTable.NewRow();
 
             // 전체조회
@@ -227,14 +226,14 @@ namespace WinForms_CRUD
             ResetFields();
         }
 
-        private void DeleteRowByColumnValue(string columnName, string item)
+        private void DeleteRowByColumnValue(string keyColumn, string keyColumnItem)
         {
             foreach (DataRow row in table.Rows)
             {
-                if (row[columnName].ToString().Equals(item, StringComparison.OrdinalIgnoreCase))
+                if (row[keyColumn].ToString().Equals(keyColumnItem, StringComparison.OrdinalIgnoreCase))
                 {
                     row.Delete();
-                    break; // 첫 번째로 찾은 행을 삭제한 후 루프 종료
+                    break;
                 }
             }
         }
@@ -243,10 +242,8 @@ namespace WinForms_CRUD
         {
             ResetFields();
 
-            // 선택된 행이 있을 때
             if (dgvProduct.SelectedRows.Count > 0)
             {
-                // 선택된 첫 번째 행을 가져옴
                 DataGridViewRow selectedRow = dgvProduct.SelectedRows[0];
 
                 string productName = selectedRow.Cells["제품명"].Value.ToString();
@@ -256,6 +253,61 @@ namespace WinForms_CRUD
                 txtProductName.Text = productName;
                 txtQuantity.Text = quantity.ToString();
                 txtUnitPrice.Text = unitPrice.ToString();
+            }
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            if (dgvProduct.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = dgvProduct.SelectedRows[0];
+
+                string productName = selectedRow.Cells["제품명"].Value.ToString();
+                string quantity = selectedRow.Cells["수량"].Value.ToString();
+                string unitPrice = selectedRow.Cells["단가"].Value.ToString();
+
+                if(productName == txtProductName.Text 
+                    && quantity == txtQuantity.Text 
+                    && unitPrice == txtUnitPrice.Text)
+                {
+                    MessageBox.Show("수정할 항목이 없습니다.");
+                    ResetFields();
+                    return;
+                }
+
+                if(productName != txtProductName.Text)
+                {
+                    UpdateRowByColumnValue("제품명", productName, "제품명", txtProductName.Text);
+                }
+
+                if (quantity != txtQuantity.Text)
+                {
+                    UpdateRowByColumnValue("제품명", productName, "수량", txtQuantity.Text);
+                    UpdateRowByColumnValue("제품명", productName, "금액", (Int32.Parse(txtQuantity.Text) * Int32.Parse(txtUnitPrice.Text)).ToString());
+                }
+
+                if (unitPrice != txtUnitPrice.Text)
+                {
+                    UpdateRowByColumnValue("제품명", productName, "단가", txtUnitPrice.Text);
+                    UpdateRowByColumnValue("제품명", productName, "금액", (Int32.Parse(txtQuantity.Text) * Int32.Parse(txtUnitPrice.Text)).ToString());
+                }
+
+                ResetFields();
+                return;
+            }
+            MessageBox.Show("수정할 항목을 선택해주세요.");
+            ResetFields();
+        }
+
+        private void UpdateRowByColumnValue(string keyColumn, string keyColumnItem, string chageColumn, string chageColumnItem)
+        {
+            foreach (DataRow row in table.Rows)
+            {
+                if (row[keyColumn].ToString().Equals(keyColumnItem, StringComparison.OrdinalIgnoreCase))
+                {
+                    row[chageColumn] = chageColumnItem;
+                    break;
+                }
             }
         }
     }
