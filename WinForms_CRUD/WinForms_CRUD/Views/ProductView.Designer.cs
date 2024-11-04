@@ -1,7 +1,7 @@
 ﻿
 namespace WinForms_CRUD
 {
-    partial class Form1
+    partial class ProductView
     {
         /// <summary>
         /// 필수 디자이너 변수입니다.
@@ -218,7 +218,7 @@ namespace WinForms_CRUD
             this.lblProductSearchError.TabIndex = 18;
             this.lblProductSearchError.Text = "존재하지 않는 제품입니다.";
             // 
-            // Form1
+            // ProductView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -241,8 +241,8 @@ namespace WinForms_CRUD
             this.Controls.Add(this.lblProductSearch);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.dgvProduct);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "ProductView";
+            this.Text = "ProductView";
             ((System.ComponentModel.ISupportInitialize)(this.dgvProduct)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
